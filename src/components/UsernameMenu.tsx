@@ -3,6 +3,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { CircleUserRound } from "lucide-react";
+import { Separator } from "@radix-ui/react-separator";
 
 const UsernameMenu = () => {
   const { user, logout } = useAuth0();
@@ -14,10 +15,16 @@ const UsernameMenu = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
+          <Link to={"/manage-restaurant"} className="font-bold hover:text-orange-500">
+            Manage Restaurant
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
           <Link to={"/user-profile"} className="font-bold hover:text-orange-500">
             User Profile1
           </Link>
         </DropdownMenuItem>
+        <Separator />
         <DropdownMenuItem>
           <Button onClick={() => logout()} className="flex flex-1 font-bold bg-orange-500">
             Logout
