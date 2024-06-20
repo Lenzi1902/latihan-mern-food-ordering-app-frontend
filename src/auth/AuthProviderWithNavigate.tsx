@@ -1,4 +1,4 @@
-import { Auth0Provider } from "@auth0/auth0-react";
+import { AppState, Auth0Provider } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
@@ -16,8 +16,9 @@ const AuthProviderWithNavigate = ({ children }: Props) => {
     throw new Error("Error");
   }
 
-  const onRedirectCallback = () => {
-    navigate("/auth-callback");
+  const onRedirectCallback = (appState?: AppState) => {
+    //penjelasan sedikit ketika useLoaction itu di masukan ke appState yang ada di dalam object loginWithReDirect, dan ketika ada maka saat ada permintaan login dan saat login akan di redirect ke halaman sebelumnya atau halaman sebelum kita login.
+    navigate(appState?.returnTo || "/auth-callback");
   };
 
   return (
